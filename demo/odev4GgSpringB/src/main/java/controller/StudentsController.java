@@ -1,6 +1,7 @@
 package controller;
 
 
+import dto.StudentDTO;
 import model.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -30,8 +31,8 @@ public class StudentsController {
         return new ResponseEntity(studentService.findById(id),HttpStatus.OK);
     }
     @PostMapping("/saveStudent")
-    public Student saveStudent(Student student){
-        return studentService.save(student);
+    public Student saveStudent(StudentDTO studentDTO){
+        return studentService.save(studentDTO);
     }
     @PostMapping("/deleteStudent")
     public  void deleteStudent(int id){

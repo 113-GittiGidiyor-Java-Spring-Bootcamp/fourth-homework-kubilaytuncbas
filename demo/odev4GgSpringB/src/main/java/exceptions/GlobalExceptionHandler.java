@@ -22,4 +22,22 @@ public class GlobalExceptionHandler {
         response.setTimeStamp(System.currentTimeMillis());
         return  response;
     }
+    @ExceptionHandler({InstructorIsAlreadyExistException.class})
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ResponseEntity<EducationAppErrorResponse> handleException(InstructorIsAlreadyExistException exc){
+        EducationAppErrorResponse response=prepareErrorResponse(HttpStatus.BAD_REQUEST,exc.getMessage());
+        return new ResponseEntity<>(response,HttpStatus.BAD_REQUEST);
+    }
+    @ExceptionHandler({CourseIsAlreadyExistException.class})
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ResponseEntity<EducationAppErrorResponse> handleException(CourseIsAlreadyExistException exc){
+        EducationAppErrorResponse response=prepareErrorResponse(HttpStatus.BAD_REQUEST, exc.getMessage());
+        return  new ResponseEntity<>(response,HttpStatus.BAD_REQUEST);
+    }
+    @ExceptionHandler({StudentNumberForOneCourseExceededException.class})
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ResponseEntity<EducationAppErrorResponse> handleException(StudentNumberForOneCourseExceededException exc){
+        EducationAppErrorResponse response=prepareErrorResponse(HttpStatus.BAD_REQUEST,exc.getMessage());
+        return new ResponseEntity<>(response,HttpStatus.BAD_REQUEST);
+    }
 }

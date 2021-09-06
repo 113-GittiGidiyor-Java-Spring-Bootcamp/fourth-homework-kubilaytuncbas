@@ -2,11 +2,9 @@ package service;
 
 import dto.StudentDTO;
 import exceptions.StudentAgeNotValidException;
-import javassist.tools.web.BadHttpRequest;
 import lombok.RequiredArgsConstructor;
 import mappers.StudentMapper;
 import model.Student;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import repository.StudentDao;
 
@@ -33,7 +31,7 @@ public class StudentManager implements StudentService{
 
     @Override
     public Student save(StudentDTO studentDTO) {
-        if (studentAgeVerify(studentDTO)==false){
+        if (!studentAgeVerify(studentDTO)){
             throw new StudentAgeNotValidException("Öğrenci yaşı 18 den küçük 40 yaştan büyük olamaz!!");
         }else{
             Student student=studentMapper.mapFromStudentDTOtoStudent(studentDTO);

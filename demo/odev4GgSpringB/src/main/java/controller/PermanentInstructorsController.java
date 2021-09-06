@@ -1,4 +1,5 @@
 package controller;
+import dto.PermanentInstructorDTO;
 import model.PermanentInstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,8 +28,8 @@ public class PermanentInstructorsController {
         return  new ResponseEntity(permanentInstructorService.findById(id),HttpStatus.OK);
     }
     @PostMapping("/savePermanentInstructor")
-    public PermanentInstructor savePermanentInstructor(PermanentInstructor permanentInstructor){
-        return permanentInstructorService.save(permanentInstructor);
+    public PermanentInstructor savePermanentInstructor(PermanentInstructorDTO permanentInstructorDTO){
+        return permanentInstructorService.save(permanentInstructorDTO);
     }
     @GetMapping("/deletePermanentInstructor")
     public  void deletePermanentInstructor(int id){

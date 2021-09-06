@@ -2,6 +2,8 @@ package service;
 
 import dto.PermanentInstructorDTO;
 import model.PermanentInstructor;
+import model.VisitingResearcher;
+
 import java.util.List;
 
 public interface PermanentInstructorService {
@@ -14,4 +16,6 @@ public interface PermanentInstructorService {
     List<PermanentInstructor> findFirst3ByFixedSalaryGreaterThan();
     List<PermanentInstructor> findFirst3ByFixedSalaryOrderByFixedSalaryDesc();
     List<PermanentInstructor> findAllByName(String name);
+    List<PermanentInstructor> findAllByEmail(String email);
+
 }

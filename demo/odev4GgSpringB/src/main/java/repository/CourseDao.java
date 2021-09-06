@@ -10,4 +10,5 @@ public interface CourseDao extends CrudRepository<Course,Integer> {
 
     List<Course> findByCourseName(String name);
     void deleteByCourseName(String name);
+    List<Course> findAllByCourseCode(String courseCode);
 }

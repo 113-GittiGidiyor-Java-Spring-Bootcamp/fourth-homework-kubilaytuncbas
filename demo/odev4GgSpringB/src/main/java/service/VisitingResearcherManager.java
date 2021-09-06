@@ -1,19 +1,21 @@
 package service;
 
+import dto.VisitingResearcherDTO;
+import exceptions.InstructorIsAlreadyExistException;
+import lombok.RequiredArgsConstructor;
+import mappers.VisitingResearcherMapper;
 import model.VisitingResearcher;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import repository.VisitingResearcherDao;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class VisitingResearcherManager implements VisitingResearcherService{
-    VisitingResearcherDao visitingResearcherDao;
-    @Autowired
-    public VisitingResearcherManager(VisitingResearcherDao visitingResearcherDao) {
-        this.visitingResearcherDao = visitingResearcherDao;
-    }
+    private final VisitingResearcherDao visitingResearcherDao;
+    private final VisitingResearcherMapper visitingResearcherMapper;
+
 
     @Override
     public List<VisitingResearcher> findAll() {
@@ -26,8 +28,15 @@ public class VisitingResearcherManager implements VisitingResearcherService{
     }
 
     @Override
-    public VisitingResearcher save(VisitingResearcher visitingResearcher) {
-        return visitingResearcherDao.save(visitingResearcher);
+    public VisitingResearcher save(VisitingResearcherDTO visitingResearcherDTO) {
+        if (!checkExistPhoneNumber(visitingResearcherDTO.getPhoneNumber())){
+            throw new InstructorIsAlreadyExistException("Aynı cep telefonu numarasıyla birden fazla kayıt yapılamaz!");
+        }
+        else{
+            VisitingResearcher visitingResearcher=visitingResearcherMapper.mapFromVisitingResearcherDTOtoVisitingResearcher(visitingResearcherDTO);
+            return visitingResearcherDao.save(visitingResearcher);
+        }
+
 
     }
 
@@ -54,5 +63,16 @@ public class VisitingResearcherManager implements VisitingResearcherService{
     @Override
     public List<VisitingResearcher> findAllByName(String name) {
         return visitingResearcherDao.findAllByName(name);
+    }
+
+    @Override
+    public List<VisitingResearcher> findAllByEmail(String email) {
+        return visitingResearcherDao.findAllByEmail(email);
+    }
+    private boolean checkExistPhoneNumber(String phoneNumber){
+        if (findAllByEmail(phoneNumber)==null){
+            return true;
+        }else
+            return false;
     }
 }

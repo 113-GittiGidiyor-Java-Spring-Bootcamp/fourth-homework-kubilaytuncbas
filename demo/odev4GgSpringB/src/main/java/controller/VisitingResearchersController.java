@@ -1,5 +1,6 @@
 package controller;
 
+import dto.VisitingResearcherDTO;
 import model.VisitingResearcher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,8 +30,8 @@ public class VisitingResearchersController {
         return new ResponseEntity<>(visitingResearcherService.findById(id),HttpStatus.OK);
     }
     @PostMapping("/saveVisitingResearcher")
-    public VisitingResearcher saveVisitingResearcher(VisitingResearcher visitingResearcher){
-        return visitingResearcherService.save(visitingResearcher);
+    public VisitingResearcher saveVisitingResearcher(VisitingResearcherDTO visitingResearcherDTO){
+        return visitingResearcherService.save(visitingResearcherDTO);
     }
     @PostMapping("/deleteVisitingResearcher")
     public  void deleteVisitingResearcher(int id){

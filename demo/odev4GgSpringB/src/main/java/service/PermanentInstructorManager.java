@@ -1,6 +1,7 @@
 package service;
 
 import dto.PermanentInstructorDTO;
+import exceptions.InstructorIsAlreadyExistException;
 import lombok.RequiredArgsConstructor;
 import mappers.PermanentInstructorMapper;
 import model.PermanentInstructor;
@@ -30,8 +31,13 @@ public class PermanentInstructorManager implements PermanentInstructorService {
 
     @Override
     public PermanentInstructor save(PermanentInstructorDTO permanentInstructorDTO) {
-        PermanentInstructor permanentInstructor=permanentInstructorMapper.mapFromPermanentInstructorDTOtoPermanentInstructor(permanentInstructorDTO);
-        return permanentInstructorDao.save(permanentInstructor);
+        if (!checkExistPhoneNumber(permanentInstructorDTO.getPhoneNumber())){
+             throw new InstructorIsAlreadyExistException("Aynı cep telefonu numarasıyla birden fazla kayıt yapılamaz!");
+        }else{
+            PermanentInstructor permanentInstructor=permanentInstructorMapper.mapFromPermanentInstructorDTOtoPermanentInstructor(permanentInstructorDTO);
+            return permanentInstructorDao.save(permanentInstructor);
+        }
+
     }
 
     @Override
@@ -56,6 +62,17 @@ public class PermanentInstructorManager implements PermanentInstructorService {
 
     @Override
     public List<PermanentInstructor> findAllByName(String name) {
-        return null;
+        return permanentInstructorDao.findAllByName(name);
+    }
+
+    @Override
+    public List<PermanentInstructor> findAllByEmail(String phoneNumber) {
+        return permanentInstructorDao.findAllByPhoneNumber(phoneNumber);
+    }
+    private boolean checkExistPhoneNumber(String phoneNumber){
+        if (findAllByEmail(phoneNumber)==null){
+            return true;
+        }else
+        return false;
     }
 }

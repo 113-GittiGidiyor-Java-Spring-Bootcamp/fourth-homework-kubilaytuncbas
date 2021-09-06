@@ -1,6 +1,7 @@
 package service;
 
 import dto.CourseDTO;
+import exceptions.CourseIsAlreadyExistException;
 import lombok.RequiredArgsConstructor;
 import mappers.CourseMapper;
 import model.Course;
@@ -32,8 +33,13 @@ public class CourseManager implements CourseService {
 
     @Override
     public Course save(CourseDTO courseDTO) {
-        Course course=courseMapper.mapFromCourseDTOtoCourse(courseDTO);
-        return courseDao.save(course);
+        if (!courseIsAlreadyExist(courseDTO.getCourseCode())){
+            throw new CourseIsAlreadyExistException("Aynı ders kodu farklı bir derste kullanılmaktadır!");
+        }else{
+            Course course=courseMapper.mapFromCourseDTOtoCourse(courseDTO);
+            return courseDao.save(course);
+        }
+
 
     }
 
@@ -55,5 +61,16 @@ public class CourseManager implements CourseService {
     @Override
     public void deleteByCourseName(String name) {
         courseDao.deleteByCourseName(name);
+    }
+
+    @Override
+    public List<Course> findAllByCourseCode(String courseCode) {
+        return courseDao.findAllByCourseCode(courseCode);
+    }
+    private boolean courseIsAlreadyExist(String courseCode){
+        if (findAllByCourseCode(courseCode)==null){
+            return true;
+        }else
+        return false;
     }
 }
