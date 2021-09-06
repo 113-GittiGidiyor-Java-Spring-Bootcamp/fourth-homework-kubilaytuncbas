@@ -12,4 +12,5 @@ public interface VisitingResearcherService {
     void update(VisitingResearcher visitingResearcher);
     List<VisitingResearcher> findFirst3ByHourlySalaryGreaterThan();
     List<VisitingResearcher> findFirst3ByHourlySalaryOrderByHourlySalaryDesc();
+    List<VisitingResearcher> findAllByName(String name);
 }

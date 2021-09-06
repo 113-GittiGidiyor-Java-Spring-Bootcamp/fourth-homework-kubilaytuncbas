@@ -50,4 +50,9 @@ public class VisitingResearcherManager implements VisitingResearcherService{
     public List<VisitingResearcher> findFirst3ByHourlySalaryOrderByHourlySalaryDesc() {
         return visitingResearcherDao.findFirst3ByHourlySalaryOrderByHourlySalaryDesc();
     }
+
+    @Override
+    public List<VisitingResearcher> findAllByName(String name) {
+        return visitingResearcherDao.findAllByName(name);
+    }
 }

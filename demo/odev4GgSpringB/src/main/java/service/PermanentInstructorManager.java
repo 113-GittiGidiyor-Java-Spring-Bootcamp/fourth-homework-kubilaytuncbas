@@ -53,4 +53,9 @@ public class PermanentInstructorManager implements PermanentInstructorService {
     public List<PermanentInstructor> findFirst3ByFixedSalaryOrderByFixedSalaryDesc() {
         return permanentInstructorDao.findFirst3ByFixedSalaryOrderByFixedSalaryDesc();
     }
+
+    @Override
+    public List<PermanentInstructor> findAllByName(String name) {
+        return null;
+    }
 }

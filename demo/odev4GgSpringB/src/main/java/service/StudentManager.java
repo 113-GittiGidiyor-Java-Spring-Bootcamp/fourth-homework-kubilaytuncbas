@@ -57,6 +57,11 @@ public class StudentManager implements StudentService{
         return studentDao.getStudentsWithGroupByGender();
     }
 
+    @Override
+    public void deleteStudentByName(String name) {
+
+    }
+
     public boolean studentAgeVerify(StudentDTO student){
         if (18<(LocalDate.now().getYear()-student.getBirthDate().getYear()) && ((LocalDate.now().getYear()-student.getBirthDate().getYear())<40) == true ){
             return  true;

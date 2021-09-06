@@ -12,4 +12,6 @@ public interface CourseService {
     Course save(CourseDTO courseDTO);
     void deleteById(int id);
     void update(Course course);
+    List<Course> findByCourseName(String name);
+    void deleteByCourseName(String name);
 }

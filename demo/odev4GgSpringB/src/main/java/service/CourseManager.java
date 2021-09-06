@@ -46,4 +46,14 @@ public class CourseManager implements CourseService {
     public void update(Course course) {
         courseDao.save(course);
     }
+
+    @Override
+    public List<Course> findByCourseName(String name) {
+        return courseDao.findByCourseName(name);
+    }
+
+    @Override
+    public void deleteByCourseName(String name) {
+        courseDao.deleteByCourseName(name);
+    }
 }

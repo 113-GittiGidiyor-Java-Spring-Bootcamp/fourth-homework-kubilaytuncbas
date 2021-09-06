@@ -11,4 +11,6 @@ public interface PermanentInstructorDao extends CrudRepository<PermanentInstruct
     List<PermanentInstructor> findFirst3ByFixedSalaryGreaterThan();
     List<PermanentInstructor> findFirst3ByFixedSalaryOrderByFixedSalaryDesc();
 
+    List<PermanentInstructor> findAllByName(String name);
+
 }

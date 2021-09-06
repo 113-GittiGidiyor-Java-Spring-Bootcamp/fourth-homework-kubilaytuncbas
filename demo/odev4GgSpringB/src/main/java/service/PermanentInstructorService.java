@@ -13,4 +13,5 @@ public interface PermanentInstructorService {
     void update(PermanentInstructor permanentInstructor);
     List<PermanentInstructor> findFirst3ByFixedSalaryGreaterThan();
     List<PermanentInstructor> findFirst3ByFixedSalaryOrderByFixedSalaryDesc();
+    List<PermanentInstructor> findAllByName(String name);
 }

@@ -13,8 +13,13 @@ public class MoneyController {
 
     private final static String MONEY_ENDPOİNT="http://localhost:8080/swagger-ui.html#/convert-controller";
 
-    @Autowired
+
     RestTemplate restTemplate;
+
+    @Autowired
+    public MoneyController(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
+    }
 
     @GetMapping
     public ResponseEntity<String> getTryToUsd(){

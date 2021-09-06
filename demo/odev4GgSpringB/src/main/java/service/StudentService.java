@@ -12,4 +12,5 @@ public interface StudentService {
     void deleteById(int id);
     void update(Student student);
     List<Student> getStudentsWithGroupByGender();
+    void deleteStudentByName(String name);
 }
