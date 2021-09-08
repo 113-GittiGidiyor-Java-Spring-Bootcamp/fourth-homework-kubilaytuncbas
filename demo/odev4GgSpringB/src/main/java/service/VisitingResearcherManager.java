@@ -16,18 +16,31 @@ public class VisitingResearcherManager implements VisitingResearcherService{
     private final VisitingResearcherDao visitingResearcherDao;
     private final VisitingResearcherMapper visitingResearcherMapper;
 
-
-    @Override
+    /**
+     *
+     * @return
+     */
+ @Override
     public List<VisitingResearcher> findAll() {
         return (List<VisitingResearcher>) visitingResearcherDao.findAll();
     }
 
-    @Override
+    /**
+     *
+     * @param id
+     * @return
+     */
+ @Override
     public VisitingResearcher findById(int id) {
         return visitingResearcherDao.findById(id).get();
     }
 
-    @Override
+    /**
+     *
+     * @param visitingResearcherDTO
+     * @return
+     */
+ @Override
     public VisitingResearcher save(VisitingResearcherDTO visitingResearcherDTO) {
         if (!checkExistPhoneNumber(visitingResearcherDTO.getPhoneNumber())){
             throw new InstructorIsAlreadyExistException("Aynı cep telefonu numarasıyla birden fazla kayıt yapılamaz!");
@@ -40,32 +53,57 @@ public class VisitingResearcherManager implements VisitingResearcherService{
 
     }
 
-    @Override
+    /**
+     *
+     * @param id
+     */
+ @Override
     public void deleteById(int id) {
         visitingResearcherDao.deleteById(id);
     }
 
-    @Override
+    /**
+     *
+     * @param visitingResearcher
+     */
+ @Override
     public void update(VisitingResearcher visitingResearcher) {
         visitingResearcherDao.save(visitingResearcher);
     }
 
-    @Override
+    /**
+     *
+     * @return
+     */
+ @Override
     public List<VisitingResearcher> findFirst3ByHourlySalaryGreaterThan() {
         return visitingResearcherDao.findFirst3ByHourlySalaryGreaterThan();
     }
 
-    @Override
+    /**
+     *
+     * @return
+     */
+ @Override
     public List<VisitingResearcher> findFirst3ByHourlySalaryOrderByHourlySalaryDesc() {
         return visitingResearcherDao.findFirst3ByHourlySalaryOrderByHourlySalaryDesc();
     }
 
-    @Override
+    /**
+     *
+     * @return
+     */
+ @Override
     public List<VisitingResearcher> findAllByName() {
         return visitingResearcherDao.findAllByName();
     }
 
-    @Override
+    /**
+     *
+     * @param email
+     * @return
+     */
+ @Override
     public List<VisitingResearcher> findAllByEmail(String email) {
         return visitingResearcherDao.findAllByEmail(email);
     }

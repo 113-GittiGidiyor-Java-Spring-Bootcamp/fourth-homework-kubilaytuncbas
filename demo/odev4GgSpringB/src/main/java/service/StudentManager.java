@@ -18,18 +18,31 @@ public class StudentManager implements StudentService{
     private final StudentDao studentDao;
     private final StudentMapper studentMapper;
 
-
-    @Override
+    /**
+     *
+     * @return
+     */
+ @Override
     public List<Student> findAll() {
         return (List<Student>) studentDao.findAll();
     }
 
-    @Override
+    /**
+     *
+     * @param id
+     * @return
+     */
+ @Override
     public Student findById(int id) {
         return studentDao.findById(id).get();
     }
 
-    @Override
+    /**
+     *
+     * @param studentDTO
+     * @return
+     */
+ @Override
     public Student save(StudentDTO studentDTO) {
         if (!studentAgeVerify(studentDTO)){
             throw new StudentAgeNotValidException("Öğrenci yaşı 18 den küçük 40 yaştan büyük olamaz!!");
@@ -40,22 +53,38 @@ public class StudentManager implements StudentService{
 
     }
 
-    @Override
+    /**
+     *
+     * @param id
+     */
+ @Override
     public void deleteById(int id) {
         studentDao.deleteById(id);
     }
 
-    @Override
+    /**
+     *
+     * @param student
+     */
+ @Override
     public void update(Student student) {
         studentDao.save(student);
     }
 
-    @Override
+    /**
+     *
+     * @return
+     */
+ @Override
     public List<Student> getStudentsWithGroupByGender() {
         return studentDao.getStudentsWithGroupByGender();
     }
 
-    @Override
+    /**
+     *
+     * @param name
+     */
+ @Override
     public void deleteStudentByName(String name) {
 
     }

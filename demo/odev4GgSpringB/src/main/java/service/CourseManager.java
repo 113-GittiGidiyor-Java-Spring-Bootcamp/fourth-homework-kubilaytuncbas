@@ -20,18 +20,32 @@ public class CourseManager implements CourseService {
 
     private final CourseMapper courseMapper;
 
-    @Override
+    /**
+     *
+     * @return
+     */
+     @Override
     public List<Course> findAll() {
         return (List<Course>) courseDao.findAll();
     }
 
-    @Override
+    /**
+     *
+     * @param id
+     * @return
+     */
+     @Override
     @Transactional(readOnly = true)
     public Course findById(int id) {
         return courseDao.findById(id).get();
     }
 
-    @Override
+    /**
+     *
+     * @param courseDTO
+     * @return
+     */
+     @Override
     public Course save(CourseDTO courseDTO) {
         if (!courseIsAlreadyExist(courseDTO.getCourseCode())){
             throw new CourseIsAlreadyExistException("Aynı ders kodu farklı bir derste kullanılmaktadır!");
@@ -43,27 +57,49 @@ public class CourseManager implements CourseService {
 
     }
 
+    /**
+     *
+     * @param id
+     */
     @Override
     public void deleteById(int id) {
         courseDao.deleteById(id);
     }
 
-    @Override
+    /**
+     *
+     * @param course
+     */
+ @Override
     public void update(Course course) {
         courseDao.save(course);
     }
 
-    @Override
+    /**
+     *
+     * @param name
+     * @return
+     */
+ @Override
     public List<Course> findByCourseName(String name) {
         return courseDao.findByCourseName(name);
     }
 
-    @Override
+    /**
+     *
+     * @param name
+     */
+ @Override
     public void deleteByCourseName(String name) {
         courseDao.deleteByCourseName(name);
     }
 
-    @Override
+    /**
+     *
+     * @param courseCode
+     * @return
+     */
+ @Override
     public List<Course> findAllByCourseCode(String courseCode) {
         return courseDao.findAllByCourseCode(courseCode);
     }

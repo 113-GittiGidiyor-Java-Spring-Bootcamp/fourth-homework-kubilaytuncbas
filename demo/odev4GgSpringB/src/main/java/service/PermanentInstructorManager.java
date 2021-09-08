@@ -18,18 +18,31 @@ public class PermanentInstructorManager implements PermanentInstructorService {
     private final PermanentInstructorMapper permanentInstructorMapper;
 
 
-
-    @Override
+    /**
+     *
+     * @return
+     */
+ @Override
     public List<PermanentInstructor> findAll() {
         return (List<PermanentInstructor>) permanentInstructorDao.findAll();
     }
 
-    @Override
+    /**
+     *
+     * @param id
+     * @return
+     */
+ @Override
     public PermanentInstructor findById(int id) {
         return permanentInstructorDao.findById(id).get();
     }
 
-    @Override
+    /**
+     *
+     * @param permanentInstructorDTO
+     * @return
+     */
+ @Override
     public PermanentInstructor save(PermanentInstructorDTO permanentInstructorDTO) {
         if (!checkExistPhoneNumber(permanentInstructorDTO.getPhoneNumber())){
              throw new InstructorIsAlreadyExistException("Aynı cep telefonu numarasıyla birden fazla kayıt yapılamaz!");
@@ -40,32 +53,58 @@ public class PermanentInstructorManager implements PermanentInstructorService {
 
     }
 
-    @Override
+    /**
+     *
+     * @param id
+     */
+ @Override
     public void deleteById(int id) {
         permanentInstructorDao.deleteById(id);
     }
 
-    @Override
+    /**
+     *
+     * @param permanentInstructor
+     */
+ @Override
     public void update(PermanentInstructor permanentInstructor) {
         permanentInstructorDao.save(permanentInstructor);
     }
 
-    @Override
+    /**
+     *
+     * @return
+     */
+ @Override
     public List<PermanentInstructor> findFirst3ByFixedSalaryGreaterThan() {
         return permanentInstructorDao.findFirst3ByFixedSalaryGreaterThan();
     }
 
-    @Override
+    /**
+     *
+     * @return
+     */
+ @Override
     public List<PermanentInstructor> findFirst3ByFixedSalaryOrderByFixedSalaryDesc() {
         return permanentInstructorDao.findFirst3ByFixedSalaryOrderByFixedSalaryDesc();
     }
 
-    @Override
+    /**
+     *
+     * @param name
+     * @return
+     */
+ @Override
     public List<PermanentInstructor> findAllByName(String name) {
         return permanentInstructorDao.findAllByName(name);
     }
 
-    @Override
+    /**
+     *
+     * @param phoneNumber
+     * @return
+     */
+ @Override
     public List<PermanentInstructor> findAllByPhoneNumber(String phoneNumber) {
         return permanentInstructorDao.findAllByPhoneNumber(phoneNumber);
     }
