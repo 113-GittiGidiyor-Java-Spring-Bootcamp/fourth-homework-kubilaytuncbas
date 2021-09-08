@@ -11,4 +11,6 @@ public interface StudentDao extends CrudRepository<Student,Integer> {
     List<Student> getStudentsWithGroupByGender();
 
     void deleteStudentByName(String name);
+
+
 }

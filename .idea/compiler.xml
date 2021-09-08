@@ -2,6 +2,7 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Annotation profile for odev4GgSpringB" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
@@ -13,13 +14,21 @@
         </processorPath>
         <module name="odev4GgSpringB" />
       </profile>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="MoneyConverter" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="MoneyConverter" target="1.8" />
       <module name="odev4GgSpringB" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="MoneyConverter" options="-parameters" />
       <module name="odev4GgSpringB" options="-parameters -Amapstruct.defaultComponentModel=spring" />
     </option>
   </component>

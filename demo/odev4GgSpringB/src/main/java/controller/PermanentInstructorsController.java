@@ -35,6 +35,11 @@ public class PermanentInstructorsController {
     public  void deletePermanentInstructor(int id){
         permanentInstructorService.deleteById(id);
     }
+    @GetMapping("/findFirst3ByFixedSalaryGreaterThan")
+    public ResponseEntity<List<PermanentInstructor>> findFirst3ByFixedSalaryGreaterThan(){
+        return new ResponseEntity<>(permanentInstructorService.findFirst3ByFixedSalaryGreaterThan(),HttpStatus.OK);
+    }
+
     @PutMapping("/updatePermanentInstructor")
     public void updatePermanentInstructor(PermanentInstructor permanentInstructor){
         permanentInstructorService.update(permanentInstructor);

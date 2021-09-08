@@ -43,4 +43,9 @@ public class StudentsController {
         studentService.update(student);
     }
 
+    @GetMapping("/genders")
+    public ResponseEntity<List<Student>> getAllGenders() {
+        return ResponseEntity.ok(studentService.getStudentsWithGroupByGender());
+    }
+
 }

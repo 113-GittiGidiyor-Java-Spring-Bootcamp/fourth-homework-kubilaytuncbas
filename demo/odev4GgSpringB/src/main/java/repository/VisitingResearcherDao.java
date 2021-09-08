@@ -9,6 +9,6 @@ public interface VisitingResearcherDao extends CrudRepository<VisitingResearcher
     List<VisitingResearcher> findFirst3ByHourlySalaryGreaterThan();
     List<VisitingResearcher> findFirst3ByHourlySalaryOrderByHourlySalaryDesc();
 
-    List<VisitingResearcher> findAllByName(String name);
+    List<VisitingResearcher> findAllByName();
     List<VisitingResearcher> findAllByEmail(String email);
 }

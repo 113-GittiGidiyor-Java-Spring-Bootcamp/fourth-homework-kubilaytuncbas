@@ -61,8 +61,8 @@ public class VisitingResearcherManager implements VisitingResearcherService{
     }
 
     @Override
-    public List<VisitingResearcher> findAllByName(String name) {
-        return visitingResearcherDao.findAllByName(name);
+    public List<VisitingResearcher> findAllByName() {
+        return visitingResearcherDao.findAllByName();
     }
 
     @Override

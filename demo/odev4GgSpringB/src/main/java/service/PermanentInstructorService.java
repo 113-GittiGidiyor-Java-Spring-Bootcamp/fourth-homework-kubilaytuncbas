@@ -16,6 +16,6 @@ public interface PermanentInstructorService {
     List<PermanentInstructor> findFirst3ByFixedSalaryGreaterThan();
     List<PermanentInstructor> findFirst3ByFixedSalaryOrderByFixedSalaryDesc();
     List<PermanentInstructor> findAllByName(String name);
-    List<PermanentInstructor> findAllByEmail(String email);
+    List<PermanentInstructor> findAllByPhoneNumber(String email);
 
 }

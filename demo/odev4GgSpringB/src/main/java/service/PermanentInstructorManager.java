@@ -66,11 +66,11 @@ public class PermanentInstructorManager implements PermanentInstructorService {
     }
 
     @Override
-    public List<PermanentInstructor> findAllByEmail(String phoneNumber) {
+    public List<PermanentInstructor> findAllByPhoneNumber(String phoneNumber) {
         return permanentInstructorDao.findAllByPhoneNumber(phoneNumber);
     }
     private boolean checkExistPhoneNumber(String phoneNumber){
-        if (findAllByEmail(phoneNumber)==null){
+        if (findAllByPhoneNumber(phoneNumber)==null){
             return true;
         }else
         return false;

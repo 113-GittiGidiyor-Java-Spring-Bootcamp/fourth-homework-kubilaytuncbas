@@ -42,4 +42,5 @@ public class VisitingResearchersController {
         visitingResearcherService.update(visitingResearcher);
     }
 
+
 }
